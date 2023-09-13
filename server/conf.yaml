@@ -1,0 +1,10 @@
+http:
+  port: ":40999"
+  readHeaderTimeout: 10s
+usecases:
+  packSizes:
+    - 250
+    - 500
+    - 1000
+    - 2000
+    - 5000
