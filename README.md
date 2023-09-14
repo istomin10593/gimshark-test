@@ -51,7 +51,7 @@ make down
 make server-run
 ```
 
-4. Run UI on local machine:
+5. Run UI on local machine:
 
 ```
 make ui-run
@@ -79,6 +79,6 @@ You can modify the pack sizes without changing the code. Response can be customi
 ## Testing
 Tests are provided for server logic with pack size counting, and including both integration and unit tests.
 To run the tests for the server, use the following command:
-```bash
+```
 make test
 ```
