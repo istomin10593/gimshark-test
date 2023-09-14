@@ -8,6 +8,8 @@ import (
 	"time"
 
 	"gimshark-test/server/internal/handler/health_handler"
+	"gimshark-test/server/internal/handler/pack_handler"
+	pack_usecase "gimshark-test/server/internal/usecase/pack"
 	"gimshark-test/server/pkg/config"
 
 	"github.com/gorilla/mux"
@@ -60,6 +62,11 @@ func routes(log *zap.Logger, cfg *config.Config) http.Handler {
 	// Health.
 	healthHandler := health_handler.New()
 	r.HandleFunc("/", healthHandler.Hello().ServeHTTP).Methods("GET")
+
+	// Packs.
+	ucasePack := pack_usecase.New(cfg.Usecases.PackSizes)
+	packHandler := pack_handler.New(log, ucasePack)
+	r.HandleFunc("/packs", packHandler.GetPacksNumber().ServeHTTP).Methods("POST")
 
 	return r
 }

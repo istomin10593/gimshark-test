@@ -1,0 +1,10 @@
+version: "3"
+services:
+  server:
+    build:
+      context: server/
+      dockerfile: Dockerfile
+    ports:
+      - 40999:40999
+    command: ["./main"]
+
