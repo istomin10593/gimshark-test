@@ -14,6 +14,9 @@ type Config struct {
 		Port              string        `yaml:"port"`
 		ReadHeaderTimeout time.Duration `yaml:"readHeaderTimeout"`
 	} `yaml:"http"`
+	Usecases struct {
+		PackSizes []uint64 `yaml:"packSizes"`
+	} `yaml:"usecases"`
 }
 
 func Parse(confPath string) (*Config, error) {

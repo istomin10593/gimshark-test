@@ -26,8 +26,7 @@ func main() {
 		log.Sync()
 
 		if r := recover(); r != nil {
-			fmt.Println(1)
-			os.Exit(1)
+			log.Fatal("application panic", zap.Any("panic", r))
 		}
 	}()
 
@@ -35,8 +34,7 @@ func main() {
 	err := realMain(ctx, log)
 
 	if err != nil {
-		log.Error("fatal err", zap.Error(err))
-		panic(err)
+		log.Fatal("fatal err", zap.Error(err))
 	}
 
 	log.Info("successful shutdown")
