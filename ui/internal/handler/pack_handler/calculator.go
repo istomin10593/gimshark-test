@@ -13,10 +13,13 @@ import (
 	"go.uber.org/zap"
 )
 
+// GetPacksNumberIn - input for get packs number.
 type GetPacksNumberOut struct {
 	Items int `json:"items"`
 }
 
+// Calculator - handler for calculating the number and size of packs.
+// Views result page.
 func (h *Handler) Calculator(w http.ResponseWriter, r *http.Request) {
 	quantity, err := strconv.Atoi(r.FormValue("quantity"))
 	if err != nil {

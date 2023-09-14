@@ -9,6 +9,7 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
+// Config - config for app.
 type Config struct {
 	HTTP struct {
 		Port              string        `yaml:"port"`
@@ -19,6 +20,7 @@ type Config struct {
 	} `yaml:"usecases"`
 }
 
+// Parse - parse config from file.
 func Parse(confPath string) (*Config, error) {
 	filename, err := filepath.Abs(confPath)
 	if err != nil {

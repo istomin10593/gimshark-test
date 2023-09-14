@@ -19,7 +19,7 @@ const defaultConfigFile = "conf.yaml"
 func main() {
 	ctx, done := signal.NotifyContext(context.Background(), syscall.SIGINT, syscall.SIGTERM, os.Interrupt, os.Kill)
 
-	// Get logger interface.
+	// Get logger instance.
 	log := logger.New()
 	defer func() {
 		done()

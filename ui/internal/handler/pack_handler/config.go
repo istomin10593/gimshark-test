@@ -5,6 +5,7 @@ import (
 	"time"
 )
 
+// Config for packs handler
 type Config struct {
 	Port     string
 	Host     string
@@ -12,6 +13,7 @@ type Config struct {
 	Timeout  time.Duration
 }
 
+// Returns new instance of Config
 func NewConfig(cnf *config.Config) *Config {
 	return &Config{
 		Port:     cnf.Packs.Port,
