@@ -12,6 +12,3 @@ ui-run:
 
 test:
 	cd server && make test
-
-run-server:
-	cd server && make run
