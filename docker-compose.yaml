@@ -8,3 +8,10 @@ services:
       - 40999:40999
     command: ["./main"]
 
+  ui:
+    build:
+      context: ui/
+      dockerfile: Dockerfile
+    ports:
+      - 40998:40998
+    command: ["./main"]

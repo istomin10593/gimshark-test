@@ -1,0 +1,9 @@
+http:
+  port: ":40998"
+  readHeaderTimeout: 10s
+packs:
+  port: ":40999"
+  host: "server"
+  endpoint: "packs"
+  timeout: 5s
+

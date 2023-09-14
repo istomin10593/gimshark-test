@@ -6,3 +6,4 @@
 *.dylib
 
 server/bin/main
+ui/bin/main

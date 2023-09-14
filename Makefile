@@ -7,6 +7,9 @@ down:
 server-run:
 	cd server && make run
 
+ui-run:
+	cd ui && make run
+
 test:
 	cd server && make test
 
