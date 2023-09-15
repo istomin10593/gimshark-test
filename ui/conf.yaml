@@ -5,5 +5,7 @@ packs:
   port: ":40999"
   host: "server"
   endpoint: "packs"
-  timeout: 5s
+  timeout: 1s
+  minJitterWait: 100ms
+  maxJitterWait: 1000ms
 

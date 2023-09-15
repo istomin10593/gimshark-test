@@ -12,11 +12,11 @@ type Handler struct {
 
 // New creates a new HTTP handler.
 func New(
-	conf *Config,
+	cfg *Config,
 	log *zap.Logger,
 ) *Handler {
 	return &Handler{
-		cfg: conf,
+		cfg: cfg,
 		log: log,
 	}
 }

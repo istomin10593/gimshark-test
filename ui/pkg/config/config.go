@@ -16,10 +16,12 @@ type Config struct {
 		ReadHeaderTimeout time.Duration `yaml:"readHeaderTimeout"`
 	} `yaml:"http"`
 	Packs struct {
-		Port     string        `yaml:"port"`
-		Host     string        `yaml:"host"`
-		Endpoint string        `yaml:"endpoint"`
-		Timeout  time.Duration `yaml:"timeout"`
+		Port          string        `yaml:"port"`
+		Host          string        `yaml:"host"`
+		Endpoint      string        `yaml:"endpoint"`
+		MinJitterWait time.Duration `yaml:"minJitterWait"`
+		MaxJitterWait time.Duration `yaml:"maxJitterWait"`
+		Timeout       time.Duration `yaml:"timeout"`
 	} `yaml:"packs"`
 }
 
