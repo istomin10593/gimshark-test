@@ -65,6 +65,7 @@ func (h *Handler) Calculator(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			h.log.Error("calculator.Request", zap.Error(err))
 			http.Error(w, err.Error(), http.StatusInternalServerError)
+
 			return
 		}
 

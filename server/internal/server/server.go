@@ -29,6 +29,8 @@ func Run(ctx context.Context, log *zap.Logger, cfg *config.Config) error {
 	errCh := make(chan error, 1)
 
 	go func() {
+		defer close(errCh)
+
 		<-ctx.Done()
 
 		log.Info("server.Serve: context closed: shutting down")
@@ -41,12 +43,14 @@ func Run(ctx context.Context, log *zap.Logger, cfg *config.Config) error {
 
 	// Run the server. This will block until the provided context is closed.
 	if err := srv.ListenAndServe(); err != nil && !errors.Is(err, http.ErrServerClosed) {
+		log.Error("failed to serve", zap.Error(err))
+
 		return fmt.Errorf("failed to serve: %w", err)
 	}
 
 	select {
 	case err := <-errCh:
-		close(errCh)
+		log.Error("failed to shutdown", zap.Error(err))
 
 		return fmt.Errorf("failed to shutdown: %w", err)
 	default:

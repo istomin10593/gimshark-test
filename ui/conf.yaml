@@ -3,7 +3,7 @@ http:
   readHeaderTimeout: 10s
 packs:
   port: ":40999"
-  host: "server"
+  host: "localhost"
   endpoint: "packs"
   timeout: 1s
   minJitterWait: 100ms

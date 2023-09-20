@@ -12,6 +12,11 @@ services:
     build:
       context: ui/
       dockerfile: Dockerfile
+    environment:
+      SERVER_HOST: "server"
+      SERVER_PORT: ":40999"
+    depends_on:
+      - server
     ports:
       - 40998:40998
     command: ["./main"]

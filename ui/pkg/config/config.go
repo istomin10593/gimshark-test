@@ -29,20 +29,31 @@ type Config struct {
 func Parse(confPath string) (*Config, error) {
 	filename, err := filepath.Abs(confPath)
 	if err != nil {
-		return nil, fmt.Errorf("can't get config path: %s", err.Error())
+		return nil, fmt.Errorf("can't get config path: %w", err)
 	}
 
 	yamlConf, err := os.ReadFile(filename)
 	if err != nil {
-		return nil, fmt.Errorf("can't read conf: %s", err.Error())
+		return nil, fmt.Errorf("can't read conf: %w", err)
 	}
 
 	var config Config
 
 	err = yaml.Unmarshal(yamlConf, &config)
 	if err != nil {
-		return nil, fmt.Errorf("can't unmarshall conf: %s", err.Error())
+		return nil, fmt.Errorf("can't unmarshall conf: %w", err)
 	}
 
+	config.Packs.Host = getEnv("SERVER_HOST", config.Packs.Host)
+	config.Packs.Port = getEnv("SERVER_PORT", config.Packs.Port)
+
 	return &config, nil
+}
+
+// getEnv - get env value or default.
+func getEnv(key, defaultValue string) string {
+	if value, exists := os.LookupEnv(key); exists {
+		return value
+	}
+	return defaultValue
 }

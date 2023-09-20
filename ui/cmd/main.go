@@ -43,7 +43,6 @@ func main() {
 func realMain(ctx context.Context, log *zap.Logger) error {
 	// Get application cfg.
 	confFlag := flag.String("conf", "", "config yaml file")
-	hostFlag := flag.String("host", "", "server host")
 	flag.Parse()
 
 	confString := *confFlag
@@ -56,11 +55,6 @@ func realMain(ctx context.Context, log *zap.Logger) error {
 		log.Error("failed to parse config", zap.Error(err))
 
 		return fmt.Errorf("failed to parse config: %w", err)
-	}
-
-	hostString := *hostFlag
-	if hostString != "" {
-		cfg.Packs.Host = hostString
 	}
 
 	return server.Run(ctx, log, cfg)
