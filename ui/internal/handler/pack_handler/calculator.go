@@ -5,6 +5,7 @@ import (
 	"context"
 	"encoding/json"
 	"io"
+	"math/rand"
 	"net/http"
 	"net/url"
 	"strconv"
@@ -82,7 +83,7 @@ func (h *Handler) Calculator(w http.ResponseWriter, r *http.Request) {
 			exponentialBackoffTime := time.Duration(1<<attempt) * time.Second
 
 			// Generate a random jitter value
-			randomJitter := time.Duration(h.cfg.MaxJitterWait-h.cfg.MinJitterWait) + h.cfg.MinJitterWait
+			randomJitter := time.Duration(rand.Intn(int(h.cfg.MaxJitterWait-h.cfg.MinJitterWait))) + h.cfg.MinJitterWait
 
 			// Apply exponential backoff with jitter
 			waitTime := exponentialBackoffTime + randomJitter

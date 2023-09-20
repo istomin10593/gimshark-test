@@ -7,7 +7,6 @@ import (
 	"gimshark-test/ui/internal/server"
 	"gimshark-test/ui/pkg/config"
 	"gimshark-test/ui/pkg/logger"
-	"os"
 	"os/signal"
 	"syscall"
 
@@ -17,7 +16,7 @@ import (
 const defaultConfigFile = "conf.yaml"
 
 func main() {
-	ctx, done := signal.NotifyContext(context.Background(), syscall.SIGINT, syscall.SIGTERM, os.Interrupt, os.Kill)
+	ctx, done := signal.NotifyContext(context.Background(), syscall.SIGINT, syscall.SIGTERM)
 
 	// Get logger instance.
 	log := logger.New()
